@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClimExpress — Location de climatiseurs à Vichy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F2A3F;
+    --navy-light: #1A3D58;
+    --sky: #3FA9D6;
+    --sky-soft: #E4F3FA;
+    --bg: #F7F9FB;
+    --slate: #5B6B76;
+    --mint: #2BAE85;
+    --warm: #E8633D;
+    --white: #FFFFFF;
+    --border: #E1E8ED;
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--navy);
+    background: var(--bg);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  img { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Skip link for accessibility */
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--navy);
+    color: white;
+    padding: 12px 20px;
+    z-index: 999;
+  }
+  .skip-link:focus { left: 0; }
+
+  :focus-visible {
+    outline: 2px solid var(--sky);
+    outline-offset: 2px;
+  }
+
+  /* ---------- HEADER ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247, 249, 251, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .logo-mark {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--sky);
+    box-shadow: 0 0 0 4px var(--sky-soft);
+  }
+  nav.main-nav {
+    display: flex;
+    gap: 32px;
+  }
+  nav.main-nav a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--navy-light);
+    transition: color 0.2s;
+  }
+  nav.main-nav a:hover { color: var(--sky); }
+
+  .header-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .phone-link {
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    font-family: var(--font-body);
+  }
+  .btn-primary {
+    background: var(--navy);
+    color: white;
+  }
+  .btn-primary:hover {
+    background: var(--navy-light);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(15, 42, 63, 0.25);
+  }
+  .btn-accent {
+    background: var(--sky);
+    color: white;
+  }
+  .btn-accent:hover {
+    background: #359dcb;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(63, 169, 214, 0.35);
+  }
+  .btn-ghost {
+    background: transparent;
+    border: 1.5px solid var(--border);
+    color: var(--navy);
+  }
+  .btn-ghost:hover { border-color: var(--sky); color: var(--sky); }
+
+  .mobile-toggle { display: none; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 72px 0 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sky);
+    background: var(--sky-soft);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 4.2vw, 3.4rem);
+    line-height: 1.08;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--sky);
+  }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--slate);
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .btn-lg { padding: 15px 30px; font-size: 1rem; }
+
+  .hero-trust {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: var(--navy-light);
+    font-weight: 500;
+  }
+  .trust-item svg { flex-shrink: 0; color: var(--mint); }
+
+  /* Signature: temperature gauge */
+  .hero-visual {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 40px 32px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(63,169,214,0.25), transparent 70%);
+    pointer-events: none;
+  }
+  .gauge-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.6);
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .gauge-temps {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-display);
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .gauge-before { color: var(--warm); }
+  .gauge-after { color: var(--sky); }
+  .gauge-track {
+    height: 10px;
+    border-radius: 100px;
+    background: linear-gradient(90deg, var(--warm) 0%, #E8B43D 35%, var(--sky) 100%);
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .gauge-marker {
+    position: absolute;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    background: white;
+    border: 4px solid var(--navy);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    left: 88%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    animation: slideMarker 2.4s ease-in-out infinite alternate;
+  }
+  @keyframes slideMarker {
+    0% { left: 88%; }
+    100% { left: 14%; }
+  }
+  .gauge-caption {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    display: flex;
+    justify-content: space-between;
+  }
+  .gauge-stat {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    gap: 24px;
+  }
+  .gauge-stat-item .num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--sky);
+  }
+  .gauge-stat-item .label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gauge-marker { animation: none; left: 20%; }
+  }
+
+  /* ---------- SECTIONS GENERAL ---------- */
+  section { padding: 88px 0; }
+  .section-head {
+    max-width: 600px;
+    margin-bottom: 48px;
+  }
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sky);
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 3vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+  .section-desc {
+    color: var(--slate);
+    font-size: 1.05rem;
+  }
+
+  /* ---------- PRODUCT ---------- */
+  .product-inner {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .product-visual {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 20px;
+  }
+  .product-features {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .product-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--navy-light);
+  }
+  .product-features li svg { flex-shrink: 0; color: var(--mint); }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  .step-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+  }
+  .step-num {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--sky);
+    margin-bottom: 16px;
+  }
+  .step-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .step-card p {
+    color: var(--slate);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- OFFERS ---------- */
+  .offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .offer-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+  .offer-card.featured {
+    border-color: var(--sky);
+    box-shadow: 0 12px 32px rgba(63,169,214,0.18);
+    position: relative;
+  }
+  .offer-badge {
+    position: absolute;
+    top: -13px;
+    left: 28px;
+    background: var(--sky);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .offer-name {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .offer-target {
+    font-size: 0.88rem;
+    color: var(--slate);
+    margin-bottom: 20px;
+  }
+  .offer-price {
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .offer-price span {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--slate);
+  }
+  .offer-power {
+    font-size: 0.85rem;
+    color: var(--sky);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .offer-features {
+    flex: 1;
+    margin-bottom: 24px;
+  }
+  .offer-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.92rem;
+    color: var(--navy-light);
+    padding: 7px 0;
+  }
+  .offer-features li svg { flex-shrink: 0; margin-top: 2px; color: var(--mint); }
+
+  /* ---------- QUOTE / ORDER ---------- */
+  .quote-section, .order-section {
+    background: var(--navy);
+    color: white;
+    border-radius: 24px;
+    margin: 0 24px;
+    padding: 64px 48px;
+  }
+  .quote-section .wrap, .order-section .wrap { padding: 0; max-width: 100%; }
+  .quote-inner, .order-inner {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .quote-section .section-eyebrow, .order-section .section-eyebrow { color: var(--sky); }
+  .quote-section h2, .order-section h2 { color: white; }
+  .quote-section .section-desc, .order-section .section-desc { color: rgba(255,255,255,0.65); }
+
+  .quote-info-list {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .quote-info-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .quote-info-item svg { flex-shrink: 0; color: var(--sky); margin-top: 2px; }
+  .quote-info-item div strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+  }
+  .quote-info-item div span {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .quote-card {
+    background: white;
+    border-radius: 18px;
+    padding: 36px;
+    color: var(--navy);
+  }
+  .quote-field { margin-bottom: 22px; }
+  .quote-field label:not(.option-check):not(.options-label) {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--navy);
+  }
+  .duration-options {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  [hidden] { display: none !important; }
+
+  .qty-control {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .qty-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: var(--bg);
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.15s;
+  }
+  .qty-btn:hover { border-color: var(--sky); }
+  .qty-value {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    min-width: 24px;
+    text-align: center;
+  }
+
+  .quote-result {
+    background: var(--sky-soft);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-top: 8px;
+    margin-bottom: 22px;
+  }
+  .quote-result-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--navy-light);
+    padding: 5px 0;
+  }
+  .quote-result-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(15,42,63,0.12);
+  }
+  .quote-result-total .label { font-weight: 600; font-size: 0.95rem; }
+  .quote-result-total .value {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .quote-result-note {
+    font-size: 0.78rem;
+    color: var(--slate);
+    margin-top: 4px;
+  }
+
+  .quote-form-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .quote-form-fields input,
+  .quote-card-full input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    background: var(--bg);
+  }
+  .quote-form-fields input:focus,
+  .quote-card-full input:focus { outline: 2px solid var(--sky); outline-offset: 1px; border-color: transparent; }
+  .quote-card-full { margin-bottom: 16px; }
+
+  .btn-block { width: 100%; }
+
+  /* ---------- PROFIL TOGGLE ---------- */
+  .profil-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 22px;
+  }
+  .profil-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 10px;
+    background: var(--bg);
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--slate);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .profil-btn:first-child { border-right: 1.5px solid var(--border); }
+  .profil-btn.active {
+    background: var(--navy);
+    color: white;
+  }
+  .profil-btn svg { flex-shrink: 0; }
+
+  .form-success {
+    display: none;
+    background: #E8F8F1;
+    border: 1.5px solid var(--mint);
+    color: #1d7a5c;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 14px;
+  }
+  .form-success.show { display: block; }
+
+  /* ---------- ORDER: UNIT SELECTOR ---------- */
+  .unit-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .unit-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 14px 8px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--navy-light);
+    text-align: center;
+  }
+  .unit-btn:hover { border-color: var(--sky); }
+  .unit-btn.active {
+    background: var(--sky);
+    border-color: var(--sky);
+    color: white;
+  }
+  .unit-count {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .unit-example {
+    font-size: 0.78rem;
+    font-weight: 500;
+    opacity: 0.9;
+    line-height: 1.3;
+  }
+  .unit-example strong { font-weight: 800; }
+  .unit-price {
+    font-size: 0.7rem;
+    font-weight: 500;
+    opacity: 0.7;
+    line-height: 1.2;
+  }
+
+  .qty-control-extra {
+    justify-content: center;
+    margin-bottom: 12px;
+    padding: 10px;
+    background: var(--bg);
+    border-radius: 10px;
+  }
+  .qty-extra-label {
+    font-size: 0.82rem;
+    color: var(--slate);
+    font-weight: 500;
+  }
+
+  .combo-note {
+    font-size: 0.85rem;
+    color: var(--mint);
+    background: #E8F8F1;
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: none;
+  }
+  .combo-note.show { display: block; }
+  .combo-note strong { font-weight: 700; }
+
+  .care-banner {
+    margin-top: 28px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: rgba(63, 169, 214, 0.1);
+    border: 1px solid rgba(63, 169, 214, 0.25);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .care-banner svg { flex-shrink: 0; color: var(--sky); margin-top: 1px; }
+  .care-banner p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+
+  .options-field {
+    background: linear-gradient(135deg, var(--sky-soft) 0%, #EFF7FB 100%);
+    border: 1.5px dashed var(--sky);
+    border-radius: 14px;
+    padding: 18px 18px 6px;
+    margin-bottom: 22px !important;
+  }
+  .options-label {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 14px !important;
+  }
+  .options-label-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .options-label-sub {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--sky);
+  }
+
+  .option-row { margin-bottom: 12px; }
+  .option-row-big { margin-bottom: 14px; }
+
+  .option-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.92rem;
+    color: var(--navy-light);
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+  }
+  .option-check:has(input:checked) {
+    border-color: var(--sky);
+    background: var(--sky-soft);
+  }
+  .option-check input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--sky);
+    flex-shrink: 0;
+  }
+  .option-check span:nth-child(2) { flex: 1; font-weight: 500; }
+  .option-check-big .option-icon { flex: 0 0 auto; }
+  .option-price {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--sky);
+  }
+
+  .option-check-big {
+    display: flex;
+    padding: 16px 18px;
+    border-width: 2px;
+    border-radius: 14px;
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(15,42,63,0.05);
+    flex-wrap: nowrap;
+  }
+  .option-check-big:hover {
+    border-color: var(--sky);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(63,169,214,0.15);
+  }
+  .option-check-big:has(input:checked) {
+    border-color: var(--sky);
+    background: var(--sky-soft);
+    box-shadow: 0 4px 14px rgba(63,169,214,0.22);
+  }
+  .option-check-big input {
+    width: 22px;
+    height: 22px;
+  }
+  .option-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--sky-soft);
+    color: var(--sky);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .option-check-big:has(input:checked) .option-icon {
+    background: var(--sky);
+    color: white;
+  }
+  .option-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .option-title {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--navy);
+    line-height: 1.25;
+  }
+  .option-sub {
+    font-size: 0.76rem;
+    color: var(--slate);
+    font-weight: 400;
+    line-height: 1.3;
+  }
+  .option-price-big {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--sky);
+    white-space: nowrap;
+    text-align: right;
+  }
+  .option-price-big small {
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    font-weight: 600;
+    display: block;
+    color: var(--slate);
+  }
+
+  .floor-stepper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+    padding: 10px 14px;
+    background: var(--bg);
+    border-radius: 10px;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list {
+    max-width: 760px;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 22px 0;
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--navy);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  .faq-question svg {
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+    color: var(--sky);
+  }
+  .faq-item.open .faq-question svg { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .faq-answer-inner {
+    padding-bottom: 22px;
+    color: var(--slate);
+    font-size: 0.95rem;
+    max-width: 640px;
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .testimonial-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .stars { color: #E8B43D; font-size: 0.95rem; margin-bottom: 14px; letter-spacing: 2px; }
+  .testimonial-text {
+    font-size: 0.95rem;
+    color: var(--navy-light);
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+  .testimonial-author {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .testimonial-author span {
+    font-weight: 400;
+    color: var(--slate);
+  }
+
+  /* ---------- CONTACT CTA ---------- */
+  .contact-cta {
+    background: var(--sky-soft);
+    border-radius: 24px;
+    margin: 0 24px;
+    padding: 56px 48px;
+    text-align: center;
+  }
+  .contact-cta h2 { margin-bottom: 10px; }
+  .contact-cta-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 0 28px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 36px;
+  }
+  .footer-brand .logo { margin-bottom: 14px; }
+  .footer-brand p {
+    color: var(--slate);
+    font-size: 0.9rem;
+    max-width: 280px;
+  }
+  .footer-col h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    color: var(--navy);
+  }
+  .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a {
+    font-size: 0.9rem;
+    color: var(--slate);
+    transition: color 0.15s;
+  }
+  .footer-col a:hover { color: var(--sky); }
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: var(--slate);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px) {
+    nav.main-nav { display: none; }
+    .phone-link { display: none; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { order: -1; }
+    .product-inner { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .offers-grid { grid-template-columns: 1fr; }
+    .quote-inner, .order-inner { grid-template-columns: 1fr; }
+    .quote-section, .order-section { padding: 40px 20px; margin: 0 12px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .quote-form-fields { grid-template-columns: 1fr; }
+    .contact-cta { padding: 40px 20px; margin: 0 12px; }
+    .quote-info-item div strong { font-size: 0.9rem; }
+    .quote-info-item div span { font-size: 0.8rem; }
+    .care-banner p { font-size: 0.85rem; }
+  }
+
+  @media (max-width: 540px) {
+    .hero { padding: 48px 0 40px; }
+    section { padding: 56px 0; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .gauge-temps { font-size: 1.7rem; }
+    .quote-card { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#commande" class="skip-link">Aller à la commande</a>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo"><span class="logo-mark"></span>ClimExpress</a>
+    <nav class="main-nav">
+      <a href="#fonctionnement">Comment ça marche</a>
+      <a href="#commande">Commander</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:0787667528" class="phone-link">07 87 66 75 28</a>
+      <a href="#commande" class="btn btn-primary">Commander</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow">Location de climatiseurs · Vichy &amp; alentours</span>
+        <h1>Climatiseur livré chez vous en <em>moins de 2h</em>.</h1>
+        <p class="hero-sub">ClimExpress loue et installe des climatiseurs mobiles pour particuliers et professionnels à Vichy, 7j/7 et 24h/24. Commandez en ligne, prix à partir de 10€/jour.</p>
+        <div class="hero-actions">
+          <a href="#commande" class="btn btn-accent btn-lg">Commander maintenant</a>
+          <a href="tel:0787667528" class="btn btn-ghost btn-lg">Appeler ClimExpress</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Livraison en moins de 2h
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Disponible 7j/7, 24h/24
+          </div>
+          <div class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Particuliers &amp; pros
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="false">
+        <p class="gauge-label">Avant / après ClimExpress</p>
+        <div class="gauge-temps">
+          <span class="gauge-before">29°C</span>
+          <span class="gauge-after">21°C</span>
+        </div>
+        <div class="gauge-track">
+          <div class="gauge-marker"></div>
+        </div>
+        <div class="gauge-caption">
+          <span>Pièce avant installation</span>
+          <span>Pièce climatisée</span>
+        </div>
+        <div class="gauge-stat">
+          <div class="gauge-stat-item">
+            <div class="num">&lt; 2h</div>
+            <div class="label">Délai de livraison</div>
+          </div>
+          <div class="gauge-stat-item">
+            <div class="num">24/7</div>
+            <div class="label">Service disponible</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT -->
+  <section id="produit">
+    <div class="wrap">
+      <div class="product-inner">
+        <div class="product-visual">
+          <svg width="100%" viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="climTitle climDesc">
+            <title id="climTitle">Climatiseur mobile ClimExpress</title>
+            <desc id="climDesc">Illustration d'un climatiseur mobile blanc et bleu, vu de face, avec écran de contrôle, grille de ventilation et roulettes.</desc>
+            <defs>
+              <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="100%" stop-color="#EEF3F6"/>
+              </linearGradient>
+              <style>
+                @keyframes air1 { 0%{transform:translate(0,0);opacity:0} 15%{opacity:0.5} 100%{transform:translate(-38px,-90px);opacity:0} }
+                @keyframes air2 { 0%{transform:translate(0,0);opacity:0} 15%{opacity:0.4} 100%{transform:translate(12px,-100px);opacity:0} }
+                @keyframes air3 { 0%{transform:translate(0,0);opacity:0} 15%{opacity:0.45} 100%{transform:translate(-18px,-85px);opacity:0} }
+                @keyframes air4 { 0%{transform:translate(0,0);opacity:0} 15%{opacity:0.35} 100%{transform:translate(28px,-95px);opacity:0} }
+                @keyframes air5 { 0%{transform:translate(0,0);opacity:0} 15%{opacity:0.4} 100%{transform:translate(-8px,-88px);opacity:0} }
+                @keyframes air6 { 0%{transform:translate(0,0);opacity:0} 15%{opacity:0.3} 100%{transform:translate(20px,-92px);opacity:0} }
+                .p1{animation:air1 2.8s ease-out infinite;animation-delay:0s}
+                .p2{animation:air2 3.1s ease-out infinite;animation-delay:0.5s}
+                .p3{animation:air3 2.6s ease-out infinite;animation-delay:1s}
+                .p4{animation:air4 3.3s ease-out infinite;animation-delay:1.5s}
+                .p5{animation:air5 2.9s ease-out infinite;animation-delay:0.3s}
+                .p6{animation:air6 3.0s ease-out infinite;animation-delay:0.8s}
+              </style>
+            </defs>
+            <ellipse cx="340" cy="478" rx="140" ry="16" fill="#0F2A3F" opacity="0.06"/>
+            <rect x="240" y="80" width="200" height="360" rx="22" fill="url(#bodyGrad)" stroke="#D7E1E8" stroke-width="1.5"/>
+            <rect x="258" y="104" width="164" height="64" rx="10" fill="#0F2A3F"/>
+            <text x="340" y="132" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">21°C</text>
+            <text x="340" y="150" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#3FA9D6">MODE FROID</text>
+            <circle cx="278" cy="138" r="4" fill="#3FA9D6"/>
+            <circle cx="402" cy="138" r="4" fill="#2BAE85"/>
+            <g>
+              <rect x="262" y="188" width="156" height="100" rx="8" fill="#FFFFFF" stroke="#D7E1E8" stroke-width="1"/>
+              <line x1="274" y1="200" x2="406" y2="200" stroke="#C7D4DC" stroke-width="3" stroke-linecap="round"/>
+              <line x1="274" y1="212" x2="406" y2="212" stroke="#C7D4DC" stroke-width="3" stroke-linecap="round"/>
+              <line x1="274" y1="224" x2="406" y2="224" stroke="#C7D4DC" stroke-width="3" stroke-linecap="round"/>
+              <line x1="274" y1="236" x2="406" y2="236" stroke="#C7D4DC" stroke-width="3" stroke-linecap="round"/>
+              <line x1="274" y1="248" x2="406" y2="248" stroke="#C7D4DC" stroke-width="3" stroke-linecap="round"/>
+              <line x1="274" y1="260" x2="406" y2="260" stroke="#C7D4DC" stroke-width="3" stroke-linecap="round"/>
+              <line x1="274" y1="272" x2="406" y2="272" stroke="#C7D4DC" stroke-width="3" stroke-linecap="round"/>
+            </g>
+            <!-- Particules d'air frais -->
+            <circle class="p1" cx="290" cy="188" r="5" fill="#3FA9D6"/>
+            <circle class="p2" cx="320" cy="188" r="4" fill="#3FA9D6"/>
+            <circle class="p3" cx="350" cy="188" r="5" fill="#3FA9D6"/>
+            <circle class="p4" cx="375" cy="188" r="3.5" fill="#3FA9D6"/>
+            <circle class="p5" cx="305" cy="188" r="4" fill="#3FA9D6"/>
+            <circle class="p6" cx="360" cy="188" r="4.5" fill="#3FA9D6"/>
+            <rect x="276" y="306" width="128" height="14" rx="7" fill="#E4F3FA"/>
+            <circle cx="320" cy="313" r="10" fill="#3FA9D6"/>
+            <circle cx="360" cy="313" r="10" fill="#FFFFFF" stroke="#C7D4DC" stroke-width="1.5"/>
+            <rect x="262" y="340" width="156" height="60" rx="8" fill="#FFFFFF" stroke="#D7E1E8" stroke-width="1"/>
+            <circle cx="294" cy="370" r="16" fill="none" stroke="#3FA9D6" stroke-width="2"/>
+            <circle cx="294" cy="370" r="4" fill="#3FA9D6"/>
+            <line x1="294" y1="358" x2="294" y2="362" stroke="#3FA9D6" stroke-width="2"/>
+            <line x1="294" y1="378" x2="294" y2="382" stroke="#3FA9D6" stroke-width="2"/>
+            <line x1="306" y1="370" x2="302" y2="370" stroke="#3FA9D6" stroke-width="2"/>
+            <line x1="282" y1="370" x2="286" y2="370" stroke="#3FA9D6" stroke-width="2"/>
+            <rect x="330" y="358" width="70" height="6" rx="3" fill="#E4F3FA"/>
+            <rect x="330" y="372" width="50" height="6" rx="3" fill="#E4F3FA"/>
+            <circle cx="270" cy="424" r="14" fill="#0F2A3F"/>
+            <circle cx="270" cy="424" r="6" fill="#1A3D58"/>
+            <circle cx="410" cy="424" r="14" fill="#0F2A3F"/>
+            <circle cx="410" cy="424" r="6" fill="#1A3D58"/>
+            <path d="M448 230 Q462 245 448 260" fill="none" stroke="#3FA9D6" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+            <path d="M462 218 Q484 245 462 272" fill="none" stroke="#3FA9D6" stroke-width="2.5" stroke-linecap="round" opacity="0.55"/>
+            <path d="M476 206 Q506 245 476 284" fill="none" stroke="#3FA9D6" stroke-width="2.5" stroke-linecap="round" opacity="0.3"/>
+          </svg>
+        </div>
+        <div class="product-text">
+          <p class="section-eyebrow">Le matériel</p>
+          <h2>Un climatiseur mobile, prêt à l'emploi</h2>
+          <p class="section-desc">Compact, sur roulettes, livré avec son kit de calfeutrage pour fenêtre. Réglage simple, écran lisible — prêt à l'emploi dès la livraison.</p>
+          <ul class="product-features">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Sur roulettes, facile à déplacer entre les pièces
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Kit de calfeutrage fenêtre inclus
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+
+  <section id="fonctionnement">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-eyebrow">Comment ça marche</p>
+        <h2>Trois étapes, un climatiseur installé</h2>
+        <p class="section-desc">Pas de paperasse compliquée : on s'occupe de la livraison, de l'installation et de la reprise.</p>
+      </div>
+      <div class="steps">
+        <div class="step-card">
+          <p class="step-num">Étape 1</p>
+          <h3>Vous commandez en ligne</h3>
+          <p>Choisissez le nombre de climatiseurs et la durée. Le prix s'affiche instantanément, sans surprise.</p>
+        </div>
+        <div class="step-card">
+          <p class="step-num">Étape 2</p>
+          <h3>On livre à votre porte</h3>
+          <p>Notre équipe livre le climatiseur à votre domicile ou local professionnel à Vichy. Si vous avez choisi l'option installation, on s'en occupe sur place.</p>
+        </div>
+        <div class="step-card">
+          <p class="step-num">Étape 3</p>
+          <h3>On reprend en fin de location</h3>
+          <p>À la fin de la période choisie, on vient récupérer l'appareil. Vous pouvez prolonger à tout moment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER -->
+  <section id="commande">
+    <div class="wrap">
+      <div class="order-section">
+        <div class="order-inner">
+          <div>
+            <p class="section-eyebrow">Commande en ligne</p>
+            <h2>Choisissez, on livre en moins de 2h</h2>
+            <p class="section-desc">Le prix dépend du nombre de climatiseurs et du nombre de jours. Exemple : 1 climatiseur × 7 jours = 94,50 €, plus 25 € de livraison. Plus vous prenez de climatiseurs, moins le prix à l'unité est élevé.</p>
+            <div class="quote-info-list">
+              <div class="quote-info-item">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div><strong>Kit de calfeutrage inclus</strong><span>Pour une installation étanche, sans perte de fraîcheur</span></div>
+              </div>
+              <div class="quote-info-item">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div><strong>Livraison en moins de 2h</strong><span>7j/7, 24h/24, à Vichy et alentours</span></div>
+              </div>
+              <div class="quote-info-item">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div><strong>Particuliers &amp; professionnels</strong><span>Facture adaptée à votre situation</span></div>
+              </div>
+            </div>
+
+            <div class="care-banner">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2C10 2 4 7 4 11.5C4 15.09 6.69 18 10 18C13.31 18 16 15.09 16 11.5C16 7 10 2 10 2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              <p>Pensez à vos grands-parents et à vos enfants : un climatiseur par pièce, c'est leur confort assuré jour et nuit.</p>
+            </div>
+          </div>
+
+          <div class="quote-card">
+            <!-- Step 1: number of units -->
+            <div class="quote-field">
+              <label>Combien de pièces à rafraîchir ?</label>
+              <div class="unit-options" role="group" aria-label="Nombre de climatiseurs">
+                <button type="button" class="unit-btn active" data-units="1">
+                  <span class="unit-count">1 pièce</span>
+                  <span class="unit-example">ex. 7 jours = <strong>119 €</strong></span>
+                  <span class="unit-price">13,50 € / jour</span>
+                </button>
+                <button type="button" class="unit-btn" data-units="2">
+                  <span class="unit-count">2 pièces</span>
+                  <span class="unit-example">ex. 7 jours = <strong>186 €</strong></span>
+                  <span class="unit-price">11,50 € / jour / clim</span>
+                </button>
+                <button type="button" class="unit-btn" data-units="3">
+                  <span class="unit-count">3+ pièces</span>
+                  <span class="unit-example">ex. 7 jours = <strong>245 €</strong></span>
+                  <span class="unit-price">10,50 € / jour / clim</span>
+                </button>
+              </div>
+              <div class="qty-control qty-control-extra" id="extra-qty-wrap" hidden>
+                <span class="qty-extra-label">Quantité exacte</span>
+                <button type="button" class="qty-btn" id="qty-minus" aria-label="Retirer un climatiseur">−</button>
+                <span class="qty-value" id="qty">3</span>
+                <button type="button" class="qty-btn" id="qty-plus" aria-label="Ajouter un climatiseur">+</button>
+              </div>
+              <p class="combo-note" id="combo-note">Sur 10 jours, 2 climatiseurs vous font économiser <strong id="combo-save">40€</strong> par rapport à 2 locations à l'unité.</p>
+            </div>
+
+            <!-- Step 2: duration -->
+            <div class="quote-field">
+              <label id="duration-label">Durée de location (en jours)</label>
+              <div class="duration-options" role="group" aria-label="Durée de location">
+                <button type="button" class="qty-btn" id="days-minus" aria-label="Retirer un jour">−</button>
+                <span class="qty-value" id="days-value">7</span>
+                <button type="button" class="qty-btn" id="days-plus" aria-label="Ajouter un jour">+</button>
+              </div>
+            </div>
+
+            <!-- Step 3: options -->
+            <div class="quote-field options-field">
+              <label class="options-label">
+                <span class="options-label-title">Complétez votre commande</span>
+                <span class="options-label-sub">Options par climatiseur</span>
+              </label>
+              <div class="option-row option-row-big">
+                <label class="option-check option-check-big">
+                  <input type="checkbox" id="opt-install">
+                  <span class="option-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10L8 15L17 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span class="option-text">
+                    <span class="option-title">Installation professionnelle</span>
+                    <span class="option-sub">Mise en service par notre équipe</span>
+                  </span>
+                  <span class="option-price option-price-big">+10€<small>/clim</small></span>
+                </label>
+              </div>
+              <div class="option-row option-row-big">
+                <label class="option-check option-check-big">
+                  <input type="checkbox" id="opt-floor">
+                  <span class="option-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 17V3M3 17H17M3 13H7M3 9H7M9 17V9H17V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                  <span class="option-text">
+                    <span class="option-title">Livraison à l'étage</span>
+                    <span class="option-sub">Montage jusqu'à votre porte</span>
+                  </span>
+                  <span class="option-price option-price-big">+5€<small>/étage/clim</small></span>
+                </label>
+                <div class="floor-stepper" id="floor-stepper" hidden>
+                  <button type="button" class="qty-btn" id="floor-minus" aria-label="Retirer un étage">−</button>
+                  <span class="qty-value" id="floor-value">1</span>
+                  <button type="button" class="qty-btn" id="floor-plus" aria-label="Ajouter un étage">+</button>
+                  <span class="qty-extra-label">étage(s)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="quote-result">
+              <div class="quote-result-row">
+                <span id="res-units-label">1 climatiseur × 7 jours</span>
+                <span id="res-base">94,50 €</span>
+              </div>
+              <div class="quote-result-row" id="res-install-row" hidden>
+                <span>Installation</span>
+                <span id="res-install">0 €</span>
+              </div>
+              <div class="quote-result-row" id="res-floor-row" hidden>
+                <span>Livraison étage</span>
+                <span id="res-floor">0 €</span>
+              </div>
+              <div class="quote-result-row">
+                <span>Livraison (obligatoire)</span>
+                <span>25 €</span>
+              </div>
+              <div class="quote-result-total">
+                <span class="label">Total à payer</span>
+                <span class="value" id="res-total">119,50 €</span>
+              </div>
+              <p class="quote-result-note">Kit de calfeutrage inclus. Reprise du matériel comprise en fin de location.</p>
+            </div>
+
+            <form id="quote-form">
+              <!-- Profil particulier / professionnel -->
+              <div class="profil-toggle" role="group" aria-label="Type de client">
+                <button type="button" class="profil-btn active" id="btn-particulier">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" stroke="currentColor" stroke-width="1.7"/><path d="M2 14c0-3.314 2.686-5 6-5s6 1.686 6 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                  Particulier
+                </button>
+                <button type="button" class="profil-btn" id="btn-professionnel">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="6" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M5 6V4a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                  Professionnel
+                </button>
+              </div>
+              <!-- Champ société (visible uniquement pro) -->
+              <div class="quote-card-full" id="societe-wrap" hidden>
+                <input type="text" name="societe" placeholder="Nom de la société" id="input-societe">
+              </div>
+              <div class="quote-form-fields">
+                <input type="text" name="nom" placeholder="Nom" required>
+                <input type="tel" name="telephone" placeholder="Téléphone" required>
+              </div>
+              <div class="quote-card-full">
+                <input type="text" name="adresse" placeholder="Adresse de livraison" required>
+              </div>
+              <div class="quote-card-full">
+                <input type="email" name="email" placeholder="Email" required>
+              </div>
+              <button type="submit" class="btn btn-accent btn-block btn-lg" id="submit-btn">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" style="flex-shrink:0"><rect x="2" y="6" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M2 10h16" stroke="currentColor" stroke-width="1.8"/><path d="M6 3l4-1 4 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                Payer en ligne — <span id="btn-total">119,50 €</span>
+              </button>
+              <p style="text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.45);margin-top:10px;">
+                🔒 Paiement sécurisé par Stripe — CB, Visa, Mastercard
+              </p>
+              <div class="form-success" id="form-success">
+                Redirection vers le paiement sécurisé…
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-eyebrow">Ils nous font confiance</p>
+        <h2>Ce que disent nos clients à Vichy</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">Livré le jour même en pleine canicule, installation faite en 15 minutes. Service impeccable.</p>
+          <p class="testimonial-author">Marc Dubois <span>— Particulier, Vichy</span></p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">On a équipé notre salle de réunion pour l'été. Tarif clair, aucune mauvaise surprise sur la facture.</p>
+          <p class="testimonial-author">Sophie Laurent <span>— Gérante, commerce local</span></p>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">Très bonne alternative à l'achat pour une location de courte durée. Je recommande sans hésiter.</p>
+          <p class="testimonial-author">Julien Perrier <span>— Particulier, Bellerive-sur-Allier</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="section-eyebrow">Questions fréquentes</p>
+        <h2>Tout ce qu'il faut savoir</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Quel est le délai de livraison ?
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3V15M3 9H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Nous livrons en moins de 2h à Vichy et dans les communes alentour, 7j/7 et 24h/24. Pour les zones plus excentrées, le délai peut être légèrement plus long : contactez-nous pour vérifier nos disponibilités.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Faut-il verser une caution ?
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3V15M3 9H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Oui, une caution de 200 € est demandée à la remise de l'appareil, sous forme de chèque non encaissé. Elle vous est restituée immédiatement lors du retour du matériel en bon état.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            L'installation est-elle incluse ?
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3V15M3 9H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">L'installation est une option à 10 € par climatiseur. Si vous la choisissez, notre équipe met l'appareil en service sur place et vous explique son fonctionnement. Sans cette option, le climatiseur est livré prêt à brancher avec son kit de calfeutrage.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Puis-je prolonger ma location en cours de route ?
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3V15M3 9H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Oui, il suffit de nous contacter avant la fin de votre période de location pour prolonger, sans interruption de service.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Proposez-vous des contrats pour les professionnels ?
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 3V15M3 9H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Oui, nous établissons des devis et factures professionnelles, avec des conditions adaptées aux locations longue durée pour les commerces et bureaux.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section>
+    <div class="wrap">
+      <div class="contact-cta">
+        <h2>Une question avant de commander ?</h2>
+        <p class="section-desc">Notre équipe répond du lundi au samedi, 9h–19h.</p>
+        <div class="contact-cta-actions">
+          <a href="tel:0787667528" class="btn btn-primary btn-lg">07 87 66 75 28</a>
+          <a href="mailto:climexpressvichy@gmail.com" class="btn btn-ghost btn-lg">climexpressvichy@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo"><span class="logo-mark"></span>ClimExpress</a>
+        <p>Location de climatiseurs pour particuliers et professionnels à Vichy et ses environs.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#produit">Le matériel</a></li>
+          <li><a href="#fonctionnement">Comment ça marche</a></li>
+          <li><a href="#commande">Commander</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:0787667528">07 87 66 75 28</a></li>
+          <li><a href="mailto:climexpressvichy@gmail.com">climexpressvichy@gmail.com</a></li>
+          <li><a href="#">Vichy, Allier</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">CGV</a></li>
+          <li><a href="#">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ClimExpress. Tous droits réservés.</span>
+      <span>SASU ATELIER 31 CORREIA — SIRET 95225185800017 — Capital 1 000 € — 31 rue Louis Duclos, 63290 Châteldon</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Pricing config (easy to edit) ----
+  // Tarif par jour selon le nombre de climatiseurs commandés
+  const UNIT_DAILY_RATE = { 1: 13.50, 2: 11.50, 3: 10.50 }; // 3 = "3 et plus"
+  const INSTALL_PRICE_PER_UNIT = 10;
+  const FLOOR_PRICE_PER_UNIT_PER_FLOOR = 5;
+  const DELIVERY_PRICE = 25;
+  const MIN_DAYS = 1;
+  const MAX_DAYS = 90;
+  const MAX_UNITS = 10;
+
+  let selectedTier = 1;   // 1, 2, ou 3 (tier de tarif sélectionné)
+  let qty = 1;             // quantité réelle de climatiseurs
+  let days = 7;             // durée en jours
+  let floors = 1;           // nombre d'étages (si option activée)
+
+  const unitBtns = document.querySelectorAll('.unit-btn');
+  const extraQtyWrap = document.getElementById('extra-qty-wrap');
+  const qtyMinus = document.getElementById('qty-minus');
+  const qtyPlus = document.getElementById('qty-plus');
+  const qtyDisplay = document.getElementById('qty');
+
+  const daysMinus = document.getElementById('days-minus');
+  const daysPlus = document.getElementById('days-plus');
+  const daysValue = document.getElementById('days-value');
+
+  const optInstall = document.getElementById('opt-install');
+  const optFloor = document.getElementById('opt-floor');
+  const floorStepper = document.getElementById('floor-stepper');
+  const floorMinus = document.getElementById('floor-minus');
+  const floorPlus = document.getElementById('floor-plus');
+  const floorValue = document.getElementById('floor-value');
+
+  const comboNote = document.getElementById('combo-note');
+  const comboSave = document.getElementById('combo-save');
+
+  const resUnitsLabel = document.getElementById('res-units-label');
+  const resBase = document.getElementById('res-base');
+  const resInstallRow = document.getElementById('res-install-row');
+  const resInstall = document.getElementById('res-install');
+  const resFloorRow = document.getElementById('res-floor-row');
+  const resFloor = document.getElementById('res-floor');
+  const resTotal = document.getElementById('res-total');
+
+  function formatEUR(n) {
+    return n.toLocaleString('fr-FR', { minimumFractionDigits: n % 1 === 0 ? 0 : 2, maximumFractionDigits: 2 }) + ' €';
+  }
+
+  function effectiveQty() {
+    // Pour les tiers 1 et 2, la quantité = le tier lui-même. Pour le tier 3 ("3+"), on utilise le stepper.
+    return selectedTier === 3 ? qty : selectedTier;
+  }
+
+  function updateQuote() {
+    const units = effectiveQty();
+    const rate = UNIT_DAILY_RATE[selectedTier];
+    const base = rate * units * days;
+    const installCost = optInstall.checked ? INSTALL_PRICE_PER_UNIT * units : 0;
+    const floorCost = optFloor.checked ? FLOOR_PRICE_PER_UNIT_PER_FLOOR * units * floors : 0;
+    const total = base + installCost + floorCost + DELIVERY_PRICE;
+
+    resUnitsLabel.textContent = units + (units > 1 ? ' climatiseurs × ' : ' climatiseur × ') + days + (days > 1 ? ' jours' : ' jour');
+    resBase.textContent = formatEUR(base);
+
+    resInstallRow.hidden = !optInstall.checked;
+    resInstall.textContent = formatEUR(installCost);
+
+    resFloorRow.hidden = !optFloor.checked;
+    resFloor.textContent = formatEUR(floorCost);
+
+    resTotal.textContent = formatEUR(total);
+
+    // Combo note: comparatif marketing pour le forfait 2 climatiseurs sur 10 jours
+    if (selectedTier === 2) {
+      const soloCost = UNIT_DAILY_RATE[1] * 2 * days;
+      const comboCost = UNIT_DAILY_RATE[2] * 2 * days;
+      const savings = soloCost - comboCost;
+      comboSave.textContent = formatEUR(savings);
+      comboNote.innerHTML = 'Sur ' + days + ' jours, 2 climatiseurs vous font économiser <strong id="combo-save">' + formatEUR(savings) + '</strong> par rapport à 2 locations à l\'unité.';
+      comboNote.classList.add('show');
+    } else {
+      comboNote.classList.remove('show');
+    }
+  }
+
+  unitBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      unitBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedTier = parseInt(btn.dataset.units, 10);
+      if (selectedTier === 3) {
+        extraQtyWrap.hidden = false;
+        if (qty < 3) { qty = 3; qtyDisplay.textContent = qty; }
+      } else {
+        extraQtyWrap.hidden = true;
+      }
+      updateQuote();
+    });
+  });
+
+  qtyMinus.addEventListener('click', () => {
+    if (qty > 3) { qty--; qtyDisplay.textContent = qty; updateQuote(); }
+  });
+  qtyPlus.addEventListener('click', () => {
+    if (qty < MAX_UNITS) { qty++; qtyDisplay.textContent = qty; updateQuote(); }
+  });
+
+  daysMinus.addEventListener('click', () => {
+    if (days > MIN_DAYS) { days--; daysValue.textContent = days; updateQuote(); }
+  });
+  daysPlus.addEventListener('click', () => {
+    if (days < MAX_DAYS) { days++; daysValue.textContent = days; updateQuote(); }
+  });
+
+  optInstall.addEventListener('change', updateQuote);
+
+  optFloor.addEventListener('change', () => {
+    floorStepper.hidden = !optFloor.checked;
+    updateQuote();
+  });
+  floorMinus.addEventListener('click', () => {
+    if (floors > 1) { floors--; floorValue.textContent = floors; updateQuote(); }
+  });
+  floorPlus.addEventListener('click', () => {
+    if (floors < 20) { floors++; floorValue.textContent = floors; updateQuote(); }
+  });
+
+  updateQuote();
+
+  // ---- Profil toggle particulier / professionnel ----
+  const btnParticulier = document.getElementById('btn-particulier');
+  const btnPro = document.getElementById('btn-professionnel');
+  const societeWrap = document.getElementById('societe-wrap');
+  const inputSociete = document.getElementById('input-societe');
+  let profil = 'particulier';
+
+  btnParticulier.addEventListener('click', () => {
+    profil = 'particulier';
+    btnParticulier.classList.add('active');
+    btnPro.classList.remove('active');
+    societeWrap.hidden = true;
+    inputSociete.required = false;
+    inputSociete.value = '';
+  });
+  btnPro.addEventListener('click', () => {
+    profil = 'professionnel';
+    btnPro.classList.add('active');
+    btnParticulier.classList.remove('active');
+    societeWrap.hidden = false;
+    inputSociete.required = true;
+  });
+
+  // ---- Mise à jour du bouton de paiement ----
+  function updatePayBtn() {
+    const btnTotal = document.getElementById('btn-total');
+    if (btnTotal) btnTotal.textContent = document.getElementById('res-total').textContent;
+  }
+  const _origUpdateQuote = updateQuote;
+  function updateQuote() {
+    _origUpdateQuote();
+    updatePayBtn();
+  }
+  // patch les listeners après définition
+  setTimeout(updatePayBtn, 0);
+
+  // ---- Form submission — Formspree + Stripe ----
+  const quoteForm = document.getElementById('quote-form');
+  const formSuccess = document.getElementById('form-success');
+  quoteForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" opacity="0.3"/><path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Préparation du paiement…';
+
+    const nom = quoteForm.querySelector('[name="nom"]').value || '';
+    const email = quoteForm.querySelector('[name="email"]').value || '';
+    const telephone = quoteForm.querySelector('[name="telephone"]').value || '';
+    const adresse = quoteForm.querySelector('[name="adresse"]').value || '';
+    const societe = quoteForm.querySelector('[name="societe"]') ? quoteForm.querySelector('[name="societe"]').value : '';
+
+    const units = effectiveQty();
+    const rate = UNIT_DAILY_RATE[selectedTier];
+    const base = rate * units * days;
+    const installCost = document.getElementById('opt-install').checked ? INSTALL_PRICE_PER_UNIT * units : 0;
+    const floorCost = document.getElementById('opt-floor').checked ? FLOOR_PRICE_PER_UNIT_PER_FLOOR * units * floors : 0;
+    const total = base + installCost + floorCost + DELIVERY_PRICE;
+    const totalCents = Math.round(total * 100);
+
+    const description = `${units} climatiseur${units > 1 ? 's' : ''} × ${days} jour${days > 1 ? 's' : ''}${installCost ? ' + installation' : ''}${floorCost ? ' + étage(s)' : ''} — ${adresse}`;
+
+    // 1. Envoyer à Formspree pour avoir le récap par mail
+    try {
+      const fData = new FormData(quoteForm);
+      fData.append('_subject', 'Nouvelle commande ClimExpress — ' + nom);
+      fData.append('profil', profil);
+      fData.append('nb_climatiseurs', units);
+      fData.append('duree_jours', days);
+      fData.append('installation', installCost ? 'Oui' : 'Non');
+      fData.append('etages', floorCost ? floors : 'Non');
+      fData.append('total_estimé', total.toFixed(2) + ' €');
+      await fetch('https://formspree.io/f/xbdvdwey', {
+        method: 'POST',
+        body: fData,
+        headers: { 'Accept': 'application/json' }
+      });
+    } catch (_) { /* non bloquant */ }
+
+    // 2. Créer la session Stripe et rediriger
+    try {
+      formSuccess.classList.add('show');
+      const res = await fetch('/.netlify/functions/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          totalCents,
+          description,
+          customerEmail: email,
+          customerName: nom,
+          metadata: {
+            nom, email, telephone, adresse,
+            profil,
+            societe: societe || '',
+            nb_climatiseurs: String(units),
+            duree_jours: String(days),
+            installation: installCost ? 'Oui' : 'Non',
+            etages: floorCost ? String(floors) : 'Non',
+            total: total.toFixed(2) + ' €'
+          }
+        })
+      });
+      const json = await res.json();
+      if (json.url) {
+        window.location.href = json.url;
+      } else {
+        throw new Error(json.error || 'Erreur inconnue');
+      }
+    } catch (err) {
+      formSuccess.classList.remove('show');
+      alert('Erreur lors de la redirection vers le paiement. Merci de nous appeler au 07 87 66 75 28.\n\nDétail : ' + err.message);
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 20 20" fill="none" style="flex-shrink:0"><rect x="2" y="6" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M2 10h16" stroke="currentColor" stroke-width="1.8"/><path d="M6 3l4-1 4 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Payer en ligne — ' + document.getElementById('res-total').textContent;
+    }
+  });
+
+  // Animation spinner
+  const spinStyle = document.createElement('style');
+  spinStyle.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+  document.head.appendChild(spinStyle);
+
+  // ---- FAQ accordion ----
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    question.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(open => {
+        if (open !== item) {
+          open.classList.remove('open');
+          open.querySelector('.faq-answer').style.maxHeight = null;
+          open.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        }
+      });
+      if (isOpen) {
+        item.classList.remove('open');
+        answer.style.maxHeight = null;
+        question.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        question.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commande confirmée — ClimExpress Vichy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F2A3F;
+    --sky: #3FA9D6;
+    --sky-soft: #E4F3FA;
+    --mint: #2BAE85;
+    --bg: #F7F9FB;
+    --border: #E1E8ED;
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Inter', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    text-align: center;
+  }
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 56px 48px;
+    max-width: 520px;
+    width: 100%;
+    box-shadow: 0 12px 40px rgba(15,42,63,0.08);
+  }
+  .icon {
+    width: 72px;
+    height: 72px;
+    background: var(--sky-soft);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+  }
+  .icon svg { color: var(--mint); }
+  h1 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+  p {
+    color: #5B6B76;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .highlight {
+    background: var(--sky-soft);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 24px 0;
+    font-size: 0.95rem;
+    color: var(--navy);
+    font-weight: 500;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    background: var(--navy);
+    color: white;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .btn:hover { background: #1A3D58; }
+  .logo {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+  }
+  .logo-mark {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--sky);
+    box-shadow: 0 0 0 4px var(--sky-soft);
+  }
+  .phone {
+    margin-top: 28px;
+    font-size: 0.88rem;
+    color: #5B6B76;
+  }
+  .phone a { color: var(--sky); font-weight: 600; text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="logo"><span class="logo-mark"></span>ClimExpress</div>
+  <div class="card">
+    <div class="icon">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+        <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <h1>Paiement confirmé !</h1>
+    <p>Votre commande a bien été enregistrée et votre paiement est validé.</p>
+    <div class="highlight">
+      🚚 Notre équipe vous contacte dans les prochaines minutes pour planifier la livraison à votre adresse.
+    </div>
+    <p>Un reçu de paiement vous a été envoyé par email par Stripe.</p>
+    <a href="/" class="btn">Retour à l'accueil</a>
+    <p class="phone">Une question ? Appelez-nous au <a href="tel:0787667528">07 87 66 75 28</a></p>
+  </div>
+</body>
+</html>
